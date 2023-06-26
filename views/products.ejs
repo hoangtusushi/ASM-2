@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+    }
+    .products-container {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .add-product-button {
+      margin-top: 20px;
+    }
+
+    .add-product-button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .add-product-button a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="products-container">
+    <h1>Products</h1>
+    <% if (products.length === 0) { %>
+      <p>No products available.</p>
+    <% } else { %>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Image</th>
+        </tr>
+        <% products.forEach(product => { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.description %></td>
+            <td><img src="<%= product.image %>" alt="<%= product.name %>" width="100"></td>
+          </tr>
+        <% }); %>
+      </table>
+    <% } %>
+
+    <div class="add-product-button">
+      <a href="/products/add">Add Product</a>
+    </div>
+  </div>
+</body>
+</html>
